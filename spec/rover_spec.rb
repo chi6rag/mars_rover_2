@@ -2,10 +2,9 @@ require 'mars_rover'
 
 module MarsRover
   RSpec.describe Rover do
+    let(:plateau){ Plateau.new(5, 5) }
 
     describe '#new' do
-      let(:plateau){ Plateau.new(5, 5) }
-
       context 'with coordinates in range of plateau coordinates' do
         let(:rover){ Rover.new(3, 3, 'N', plateau) }
 
@@ -31,16 +30,20 @@ module MarsRover
       end
     end
 
-
-
     describe '#execute' do
-      context 'with valid left instruction' do
-        let(:plateau){ Plateau.new(5, 5) }
-        let(:rover){ Rover.new(3, 3, 'N', plateau) }
+      let(:rover){ Rover.new(3, 3, 'N', plateau) }
 
+      context 'with valid left instruction' do
         it 'rotates the rover left by 90 degrees' do
           rover.execute('L')
           expect(rover.instance_eval('@heading')).to eq('W')
+        end
+      end
+
+      context 'with valid right instruction' do
+        it 'rotates the rover right by 90 degrees' do
+          rover.execute('R')
+          expect(rover.instance_eval('@heading')).to eq('E')
         end
       end
     end

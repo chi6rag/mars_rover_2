@@ -26,6 +26,12 @@ module MarsRover
     end
     alias_method :L, :turn_left
 
+    def turn_right
+      current_heading = @heading
+      new_heading_index = (HEADINGS.find_index(current_heading)+1) % 4
+      @heading = HEADINGS[new_heading_index]
+    end
+    alias_method :R, :turn_right
 
     private
     def validates_range_of(x, y)
