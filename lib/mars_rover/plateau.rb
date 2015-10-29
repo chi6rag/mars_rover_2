@@ -1,5 +1,6 @@
 module MarsRover
   class Plateau
+    attr_reader :x_max, :y_max
 
     def initialize(x_max, y_max)
       validates_positivity_of x_max, y_max
