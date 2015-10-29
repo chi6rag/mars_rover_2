@@ -46,6 +46,12 @@ module MarsRover
           expect(rover.instance_eval('@heading')).to eq('E')
         end
       end
+
+      context 'with valid move instruction' do
+        it "moves the rover by 1 unit in the direction of its heading" do
+          expect{ rover.execute('M') }.to change{ rover.instance_eval('@y') }.by(1)
+        end
+      end
     end
 
   end

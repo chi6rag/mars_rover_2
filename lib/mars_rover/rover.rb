@@ -33,6 +33,21 @@ module MarsRover
     end
     alias_method :R, :turn_right
 
+    def move
+      case @heading
+        when 'N'
+          @y+=1
+        when 'S'
+          @y-=1
+        when 'E'
+          @x+=1
+        when 'W'
+          @x-=1
+        else
+      end
+    end
+    alias_method :M, :move
+
     private
     def validates_range_of(x, y)
       unless(x.between?(0, @plateau_landed_on.x_max) && y.between?(0, @plateau_landed_on.x_max))
