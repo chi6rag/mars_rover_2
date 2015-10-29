@@ -31,5 +31,19 @@ module MarsRover
       end
     end
 
+
+
+    describe '#execute' do
+      context 'with valid left instruction' do
+        let(:plateau){ Plateau.new(5, 5) }
+        let(:rover){ Rover.new(3, 3, 'N', plateau) }
+
+        it 'rotates the rover left by 90 degrees' do
+          rover.execute('L')
+          expect(rover.instance_eval('@heading')).to eq('W')
+        end
+      end
+    end
+
   end
 end
