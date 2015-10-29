@@ -15,6 +15,14 @@ module MarsRover
           expect(rover.instance_eval('@plateau_landed_on')).to eq(plateau)
         end
       end
+
+      context 'with coordinates out of range of plateau coordinates' do
+        let(:plateau){ Plateau.new(5, 5) }
+
+        it 'raises Exception' do
+          expect { Rover.new(7, 3, plateau) }.to raise_error('Rover Coordinates Out of Bounds')
+        end
+      end
     end
 
   end
